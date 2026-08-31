@@ -291,6 +291,8 @@ footer a.link:hover{text-decoration:underline;}
 .pagamento-chip:has(input:checked){border-color:var(--destaque); background:var(--verde-100); color:var(--verde-900);}
 .pagamento-chip:hover{border-color:var(--verde-400);}
 .voltar-carrinho{background:none; color:var(--verde-700); font-weight:800; font-size:0.85rem; display:flex; align-items:center; gap:6px; margin-bottom:14px;}
+.limpar-dados-btn{background:none; color:var(--texto-suave); font-weight:700; font-size:0.78rem; text-decoration:underline; padding:4px 0; margin-top:2px;}
+.limpar-dados-btn:hover{color:#c94b4b;}
 
 /* toast */
 .toast{
@@ -611,6 +613,7 @@ footer a.link:hover{text-decoration:underline;}
           <textarea id="obsCliente" rows="2" placeholder="Ex: trocar banana por banana nanica"></textarea>
         </div>
       </form>
+      <button type="button" class="limpar-dados-btn" onclick="limparDadosCliente()">🗑️ Limpar meus dados salvos</button>
     </div>
     <div class="carrinho-resumo" id="resumoFormulario"></div>
   </div>
@@ -842,6 +845,58 @@ function fecharCarrinho(){
 function mostrarView(view){
   document.getElementById('viewCarrinho').style.display = view==='carrinho' ? 'flex' : 'none';
   document.getElementById('viewFormulario').style.display = view==='formulario' ? 'flex' : 'none';
+  if(view==='formulario') carregarDadosCliente();
+}
+
+/* ============================================================
+   DADOS DO CLIENTE SALVOS (localStorage)
+   Evita que o cliente precise redigitar nome/endereço a cada pedido.
+============================================================ */
+const CHAVE_DADOS_CLIENTE = 'dahortaexpress_dadosCliente';
+
+function salvarDadosCliente(){
+  const pagamentoInput = document.querySelector('input[name="pagamento"]:checked');
+  const dados = {
+    nome: document.getElementById('nomeCliente').value.trim(),
+    telefone: document.getElementById('telefoneCliente').value.trim(),
+    cidade: document.getElementById('cidadeCliente').value,
+    rua: document.getElementById('ruaCliente').value.trim(),
+    numero: document.getElementById('numeroCliente').value.trim(),
+    bairro: document.getElementById('bairroCliente').value.trim(),
+    referencia: document.getElementById('referenciaCliente').value.trim(),
+    pagamento: pagamentoInput ? pagamentoInput.value : null
+  };
+  try{
+    localStorage.setItem(CHAVE_DADOS_CLIENTE, JSON.stringify(dados));
+  }catch(e){ /* localStorage indisponível — ignora silenciosamente */ }
+}
+
+function carregarDadosCliente(){
+  let dados;
+  try{
+    const salvo = localStorage.getItem(CHAVE_DADOS_CLIENTE);
+    if(!salvo) return;
+    dados = JSON.parse(salvo);
+  }catch(e){ return; }
+  if(!dados) return;
+
+  if(dados.nome) document.getElementById('nomeCliente').value = dados.nome;
+  if(dados.telefone) document.getElementById('telefoneCliente').value = dados.telefone;
+  if(dados.cidade) document.getElementById('cidadeCliente').value = dados.cidade;
+  if(dados.rua) document.getElementById('ruaCliente').value = dados.rua;
+  if(dados.numero) document.getElementById('numeroCliente').value = dados.numero;
+  if(dados.bairro) document.getElementById('bairroCliente').value = dados.bairro;
+  if(dados.referencia) document.getElementById('referenciaCliente').value = dados.referencia;
+  if(dados.pagamento){
+    const input = document.querySelector(`input[name="pagamento"][value="${dados.pagamento}"]`);
+    if(input) input.checked = true;
+  }
+}
+
+function limparDadosCliente(){
+  try{ localStorage.removeItem(CHAVE_DADOS_CLIENTE); }catch(e){}
+  document.getElementById('formEntrega').reset();
+  mostrarToast("Seus dados salvos foram apagados 🗑️");
 }
 
 /* ============================================================
@@ -899,11 +954,15 @@ function enviarPedidoWhatsApp(){
   const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 
+  // salva os dados do cliente para pré-preencher no próximo pedido
+  salvarDadosCliente();
+
   // limpa o carrinho e o formulário após enviar
   carrinho = {};
   salvarCarrinho();
   atualizarBadge();
   document.getElementById('formEntrega').reset();
+  carregarDadosCliente(); // repõe nome/endereço salvos após o reset()
   fecharCarrinho();
   mostrarToast("Pedido enviado! Confira o WhatsApp 🎉");
 }

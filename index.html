@@ -475,9 +475,9 @@ footer a.link:hover{text-decoration:underline;}
 <section class="secao" id="verduras" style="background:var(--creme);">
   <div class="container">
     <div class="secao-titulo">
-      <span class="eyebrow">🥬 Verduras hidropônicas</span>
-      <h2>Crocantes e sem terra</h2>
-      <p>Cultivo hidropônico, mais limpo e com mais durabilidade na geladeira.</p>
+      <span class="eyebrow">🥬 Verduras </span>
+      <h2>Fresquinhas e cheia de sabor</h2>
+      <p>Frescas, crocantes e prontas para sua mesa.</p>
     </div>
     <div class="grade-produtos" id="grade-verduras"></div>
   </div>
@@ -642,7 +642,7 @@ footer a.link:hover{text-decoration:underline;}
 ============================================================ */
 const PRODUTOS = [
   // ---------- FRUTAS ----------
-  { id:"morango",      nome:"Morango",              unidade:"bandeja", preco:10.00,  categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango.jpg" },
+  { id:"morango",      nome:"Morango",              unidade:"bandeja",             preco:10.00,  categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango.jpg" },
   { id:"morango-caixa",nome:"Caixa de Morango",     unidade:"caixa c/ 4 bandejas", preco:35.00, categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango-cx.jpg" },
   { id:"banana",       nome:"Banana",                unidade:"bandeja",           preco:8.00,  categoria:"frutas",  emoji:"🍌", imagem:"produtos/banana.jpg" },
   { id:"maca",         nome:"Maçã",                  unidade:"bandeja",           preco:8.00,  categoria:"frutas",  emoji:"🍎", imagem:"produtos/maca.jpg"},
@@ -652,12 +652,14 @@ const PRODUTOS = [
   { id:"laranja-saco", nome:"Laranja",               unidade:"saco 10kg",    preco:25.00, categoria:"frutas",  emoji:"🍊", imagem:"produtos/laranja.jpg" },
   { id:"abacaxi",      nome:"Abacaxi",               unidade:"unidade",      preco:6.00,  categoria:"frutas",  emoji:"🍍", imagem:"produtos/abacaxi.jpg"},
   { id:"mamao",        nome:"Mamão",                 unidade:"unidade",      preco:8.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/mamao.jpg"},
+   { id:"manga",       nome:"Manga",                 unidade:"unidade",      preco:8.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/manga.jpg"},
+  { id:"limao",        nome:"Limão taiti",           unidade:"bandeja",      preco:8.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/limao-taiti.jpg"},
 
   // ---------- VERDURAS HIDROPÔNICAS ----------
   { id:"alface-crespa",nome:"Alface Crespa",         unidade:"unidade",      preco:5.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-crespa.jpg" },
   { id:"alface-roxa",  nome:"Alface Roxa",            unidade:"unidade",      preco:5.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-roxo.jpg" },
   { id:"brocolis",     nome:"Brócolis",               unidade:"unidade",      preco:6.90,  categoria:"verduras",emoji:"🥦", imagem:"produtos/brocolis.jpg"},
-  { id:"agriao",       nome:"Agrião",                 unidade:"maço",         preco:5.00,  categoria:"verduras",emoji:"🌿", imagem:"produtos/agriao.jpg"},
+  { id:"couve flor",       nome:"Couve Flor",         unidade:"unidade",      preco:5.00,  categoria:"verduras",emoji:"🥦", imagem:"produtos/couve-flor.jpg"},
   { id:"repolho",      nome:"Repolho Verde",          unidade:"unidade",      preco:6.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/repolho.jpg" },
   { id:"rucula",       nome:"Rúcula",                 unidade:"maço",         preco:5.00,  categoria:"verduras",emoji:"🌿", imagem:"produtos/rucula.jpg" },
 
@@ -674,7 +676,12 @@ const PRODUTOS = [
   { id:"chuchu",       nome:"Chuchu",                   unidade:"bandeja",         preco:6.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/chuchu.jpg" },
   { id:"alho-poro",    nome:"Alho Poró",                unidade:"maço",       preco:8.00,  categoria:"legumes", emoji:"🌱", imagem:"produtos/alho-poro.jpg" },
   { id:"gengibre",     nome:"Gengibre",                 unidade:"bandeja",         preco:7.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/gengibre.jpg" },
+   { id:"inhame",       nome:"Inhame",                   unidade:"bandeja",         preco:6.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/inhame.jpg" },
+  { id:"pepino japones",  nome:"Pepino japônes",       unidade:"bandeja",       preco:8.00,  categoria:"legumes", emoji:"🌱", imagem:"produtos/pepino-japones.jpg" },
+  { id:"berinjela",     nome:"Berinjela",                unidade:"bandeja",         preco:7.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/berinjela.jpg" },
+   { id:"milho verde",     nome:"Milho Verde",             unidade:"bandeja",         preco:7.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/milho-verde.jpg" },
 ];
+
 
 /* ---------- CONFIGURAÇÕES GERAIS (edite aqui se precisar) ---------- */
 const WHATSAPP_NUMERO = "5515997485821"; // formato: 55 + DDD + número

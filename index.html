@@ -523,7 +523,7 @@ footer a.link:hover{text-decoration:underline;}
         <ul>
           <li><a class="link" href="https://wa.me/5515997485821" target="_blank" rel="noopener">📱 (15) 99748-5821</a></li>
           <li><a class= "link" href="https://www.instagram.com/dahortaexpress26/" target= "_blank" rel="noopener noreferrer"> 📷 @dahortaexpress26</a></li>
-          <li>Pedidos: domingo, terça e quinta</li>
+          
         </ul>
       </div>
     </div>
@@ -642,44 +642,47 @@ footer a.link:hover{text-decoration:underline;}
 ============================================================ */
 const PRODUTOS = [
   // ---------- FRUTAS ----------
-  { id:"morango",      nome:"Morango",              unidade:"bandeja",             preco:10.00,  categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango.jpg" },
-  { id:"morango-caixa",nome:"Caixa de Morango",     unidade:"caixa c/ 4 bandejas", preco:35.00, categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango-cx.jpg" },
-  { id:"banana",       nome:"Banana",                unidade:"bandeja",           preco:8.00,  categoria:"frutas",  emoji:"🍌", imagem:"produtos/banana.jpg" },
-  { id:"maca",         nome:"Maçã",                  unidade:"bandeja",           preco:8.00,  categoria:"frutas",  emoji:"🍎", imagem:"produtos/maca.jpg"},
-  { id:"uva-verde",    nome:"Uva Verde",             unidade:"bandeja",           preco:12.90, categoria:"frutas",  emoji:"🍏", imagem:"produtos/uva-verde.jpg"},
-  { id:"uva-niagara",  nome:"Uva niágara",           unidade:"bandeja",           preco:11.90, categoria:"frutas",  emoji:"🍇", imagem:"produtos/uva-vitoria.jpg"},
-  { id:"kiwi",         nome:"Kiwi",                  unidade:"bandeja",      preco:10.00,  categoria:"frutas",  emoji:"🥝", imagem:"produtos/kiwi.jpg" },
-  { id:"laranja-saco", nome:"Laranja",               unidade:"saco 10kg",    preco:25.00, categoria:"frutas",  emoji:"🍊", imagem:"produtos/laranja.jpg" },
-  { id:"abacaxi",      nome:"Abacaxi",               unidade:"unidade",      preco:6.00,  categoria:"frutas",  emoji:"🍍", imagem:"produtos/abacaxi.jpg"},
-  { id:"mamao",        nome:"Mamão",                 unidade:"unidade",      preco:8.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/mamao.jpg"},
-   { id:"manga",       nome:"Manga",                 unidade:"unidade",      preco:8.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/manga.jpg"},
-  { id:"limao",        nome:"Limão taiti",           unidade:"bandeja",      preco:8.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/limao-taiti.jpg"},
+  { id:"morango",      nome:"Morango",              unidade:"bandeja",             preco:12.00,  categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango.jpg" },
+  { id:"morango-caixa",nome:"Caixa de Morango",     unidade:"caixa c/ 4 bandejas", preco:45.00, categoria:"frutas",  emoji:"🍓", imagem:"produtos/morango-cx.jpg" },
+  { id:"banana",       nome:"Banana",                unidade:"bandeja c/ 6un",           preco:8.00,  categoria:"frutas",  emoji:"🍌", imagem:"produtos/banana.jpg" },
+  { id:"maca",         nome:"Maçã",                  unidade:"bandeja c/ 6un",           preco:8.00,  categoria:"frutas",  emoji:"🍎", imagem:"produtos/maca.jpg"},
+  { id:"uva-verde",    nome:"Uva Verde",             unidade:"bandeja 500g",           preco:13.00, categoria:"frutas",  emoji:"🍏", imagem:"produtos/uva-verde.jpg"},
+  { id:"uva-niagara",  nome:"Uva Niagara",           unidade:"bandeja 500g",           preco:10.00, categoria:"frutas",  emoji:"🍇", imagem:"produtos/uva-vitoria.jpg"},
+  { id:"kiwi",         nome:"Kiwi",                  unidade:"bandeja 500g",      preco:20.00,  categoria:"frutas",  emoji:"🥝", imagem:"produtos/kiwi.jpg" },
+  { id:"laranja-saco", nome:"Laranja",               unidade:"saco 3,5kg",    preco:15.00, categoria:"frutas",  emoji:"🍊", imagem:"produtos/laranja.jpg" },
+  { id:"abacaxi",      nome:"Abacaxi",               unidade:"unidade",      preco:12.00,  categoria:"frutas",  emoji:"🍍", imagem:"produtos/abacaxi.jpg"},
+  { id:"mamao",        nome:"Mamão",                 unidade:"unidade",      preco:9.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/mamao.jpg"},
+   { id:"manga",       nome:"Manga",                 unidade:"unidade",      preco:9.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/manga.jpg"},
+  { id:"limao",        nome:"Limão taiti",           unidade:"bandeja",      preco:7.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/limao-taiti.jpg"},
 
   // ---------- VERDURAS HIDROPÔNICAS ----------
-  { id:"alface-crespa",nome:"Alface Crespa",         unidade:"unidade",      preco:5.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-crespa.jpg" },
-  { id:"alface-roxa",  nome:"Alface Roxa",            unidade:"unidade",      preco:5.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-roxo.jpg" },
-  { id:"brocolis",     nome:"Brócolis",               unidade:"unidade",      preco:6.90,  categoria:"verduras",emoji:"🥦", imagem:"produtos/brocolis.jpg"},
-  { id:"couve flor",       nome:"Couve Flor",         unidade:"unidade",      preco:5.00,  categoria:"verduras",emoji:"🥦", imagem:"produtos/couve-flor.jpg"},
-  { id:"repolho",      nome:"Repolho Verde",          unidade:"unidade",      preco:6.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/repolho.jpg" },
-  { id:"rucula",       nome:"Rúcula",                 unidade:"maço",         preco:5.00,  categoria:"verduras",emoji:"🌿", imagem:"produtos/rucula.jpg" },
+  { id:"alface-crespa",nome:"Alface Crespa",         unidade:"unidade",      preco:6.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-crespa.jpg" },
+  { id:"alface-roxa",  nome:"Alface Roxa",            unidade:"unidade",      preco:6.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-roxo.jpg" },
+  { id:"brocolis",     nome:"Brócolis Ninja",               unidade:"unidade", preco:7.00,  categoria:"verduras",emoji:"🥦", imagem:"produtos/brocolis.jpg"},
+  { id:"couve flor",       nome:"Couve Flor",         unidade:"unidade",      preco:7.00,  categoria:"verduras",emoji:"🥦", imagem:"produtos/couve-flor.jpg"},
+  { id:"repolho",      nome:"Repolho Verde",          unidade:"unidade",      preco:7.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/repolho.jpg" },
+  { id:"rucula",       nome:"Rúcula",                 unidade:"maço",         preco:6.00,  categoria:"verduras",emoji:"🌿", imagem:"produtos/rucula.jpg" },
 
   // ---------- LEGUMES ----------
-  { id:"alho",         nome:"Alho",                   unidade:"bandeja",           preco:8.00, categoria:"legumes", emoji:"🧄", imagem:"produtos/alho.jpg" },
-  { id:"cebola",       nome:"Cebola",                 unidade:"bandeja",           preco:7.00,  categoria:"legumes", emoji:"🧅", imagem:"produtos/cebola.jpg" },
-  { id:"tomate",       nome:"Tomate",                 unidade:"bandeja",           preco:7.00,  categoria:"legumes", emoji:"🍅", imagem:"produtos/tomate.jpg" },
-  { id:"cenoura",      nome:"Cenoura",                unidade:"bandeja",           preco:6.00,  categoria:"legumes", emoji:"🥕", imagem:"produtos/cenoura.jpg" },
+ 
+  { id:"cebola",       nome:"Cebola",                 unidade:"bandeja c/ 6un",    preco:7.00,  categoria:"legumes", emoji:"🧅", imagem:"produtos/cebola.jpg" },
+  { id:"tomate",       nome:"Tomate",                 unidade:"bandeja c/ 6un",     preco:8.00,  categoria:"legumes", emoji:"🍅", imagem:"produtos/tomate.jpg" },
+  { id:"cenoura",      nome:"Cenoura",                unidade:"bandeja c/ 5un",     preco:7.00,  categoria:"legumes", emoji:"🥕", imagem:"produtos/cenoura.jpg" },
   { id:"batata-doce",  nome:"Batata Doce",             unidade:"bandeja",          preco:8.00,  categoria:"legumes", emoji:"🍠", imagem:"produtos/batata-doce.jpg" },
   { id:"beterraba",    nome:"Beterraba",               unidade:"bandeja",          preco:8.00,  categoria:"legumes", emoji:"🔴", imagem:"produtos/beterraba.jpg" },
-  { id:"mandioquinha", nome:"Mandioquinha",            unidade:"bandeja",          preco:9.90,  categoria:"legumes", emoji:"🥔", imagem:"produtos/mandioquinha.jpg" },
-  { id:"pimentao",     nome:"Pimentão",                 unidade:"bandeja",         preco:8.90,  categoria:"legumes", emoji:"🫑", imagem:"produtos/pimentao.jpg" },
-  { id:"abobrinha",    nome:"Abobrinha",                unidade:"bandeja",         preco:5.90,  categoria:"legumes", emoji:"🥒", imagem:"produtos/abobrinha.jpg"},
-  { id:"chuchu",       nome:"Chuchu",                   unidade:"bandeja",         preco:6.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/chuchu.jpg" },
-  { id:"alho-poro",    nome:"Alho Poró",                unidade:"maço",       preco:8.00,  categoria:"legumes", emoji:"🌱", imagem:"produtos/alho-poro.jpg" },
-  { id:"gengibre",     nome:"Gengibre",                 unidade:"bandeja",         preco:7.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/gengibre.jpg" },
-   { id:"inhame",       nome:"Inhame",                   unidade:"bandeja",         preco:6.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/inhame.jpg" },
-  { id:"pepino japones",  nome:"Pepino japônes",       unidade:"bandeja",       preco:8.00,  categoria:"legumes", emoji:"🌱", imagem:"produtos/pepino-japones.jpg" },
+  { id:"mandioquinha", nome:"Mandioquinha",            unidade:"bandeja",          preco:10.00,  categoria:"legumes", emoji:"🥔", imagem:"produtos/mandioquinha.jpg" },
+  { id:"pimentao",     nome:"Pimentão",                 unidade:"bandeja",         preco:8.00,  categoria:"legumes", emoji:"🫑", imagem:"produtos/pimentao.jpg" },
+  { id:"abobrinha",    nome:"Abobrinha",                unidade:"bandeja",         preco:7.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/abobrinha.jpg"},
+  { id:"chuchu",       nome:"Chuchu",                   unidade:"bandeja",         preco:7.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/chuchu.jpg" },
+  { id:"alho-poro",    nome:"Alho Poró",                unidade:"bandeja c/ 3un",       preco:8.00,  categoria:"legumes", emoji:"🌱", imagem:"produtos/alho-poro.jpg" },
+  { id:"gengibre",     nome:"Gengibre",                 unidade:"bandeja",         preco:8.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/gengibre.jpg" },
+   { id:"inhame",       nome:"Inhame",                   unidade:"bandeja",         preco:8.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/inhame.jpg" },
+  { id:"pepino japones",  nome:"Pepino japônes",       unidade:"bandeja",       preco:7.00,  categoria:"legumes", emoji:"🌱", imagem:"produtos/pepino-japones.jpg" },
   { id:"berinjela",     nome:"Berinjela",                unidade:"bandeja",         preco:7.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/berinjela.jpg" },
    { id:"milho verde",     nome:"Milho Verde",             unidade:"bandeja",         preco:7.00, categoria:"legumes", emoji:"🫚", imagem:"produtos/milho-verde.jpg" },
+    { id:"vagem",       nome:"Vagem",                   unidade:"bandeja",         preco:7.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/vagem.jpg" },
+     { id:"quiabo",       nome:"Quiabo",                   unidade:"bandeja",         preco:7.00,  categoria:"legumes", emoji:"🥒", imagem:"produtos/quiabo.jpg" },
+
 ];
 
 

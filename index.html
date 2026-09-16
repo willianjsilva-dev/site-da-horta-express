@@ -213,6 +213,55 @@ nav.menu a:hover{background:rgba(255,255,255,0.14);}
 }
 .btn-add:hover{filter:brightness(1.08); transform:translateY(-1px);}
 .btn-add.adicionado{background:var(--destaque); color:var(--verde-900);}
+.cartao-kit{border:2px dashed var(--verde-400);}
+.cartao-kit .btn-add{background:var(--grad-hero); color:#fff;}
+.cartao-kit .btn-add:hover{filter:brightness(1.25);}
+
+/* ===================== MODAL "MONTAR KIT" ===================== */
+.kit-overlay{
+  position:fixed; inset:0; background:rgba(10,20,14,.55); backdrop-filter:blur(2px);
+  opacity:0; pointer-events:none; transition:opacity .25s; z-index:110;
+}
+.kit-overlay.ativo{opacity:1; pointer-events:auto;}
+.kit-modal{
+  position:fixed; top:50%; left:50%; transform:translate(-50%,-45%); width:480px; max-width:92vw;
+  max-height:82vh; background:#fff; border-radius:20px; z-index:115; box-shadow:0 24px 60px rgba(0,0,0,.3);
+  display:flex; flex-direction:column; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
+}
+.kit-modal.aberto{opacity:1; pointer-events:auto; transform:translate(-50%,-50%);}
+.kit-modal-cabecalho{
+  background:var(--grad-hero); color:#fff; padding:20px 22px 16px; border-radius:20px 20px 0 0;
+  display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+}
+.kit-modal-cabecalho h3{color:#fff; font-size:1.1rem; margin-bottom:4px;}
+.kit-modal-cabecalho p{color:rgba(255,255,255,.8); font-size:0.82rem;}
+.kit-modal-contador{
+  background:rgba(255,255,255,.18); color:#fff; font-weight:800; padding:6px 12px; border-radius:20px;
+  font-size:0.85rem; white-space:nowrap; flex-shrink:0;
+}
+.kit-modal-lista{flex:1; overflow-y:auto; padding:6px 22px;}
+.kit-item-linha{display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #eef2ee;}
+.kit-item-linha:last-child{border-bottom:none;}
+.kit-item-foto{width:44px; height:44px; border-radius:10px; background:var(--verde-100); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; overflow:hidden;}
+.kit-item-foto img{width:100%; height:100%; object-fit:cover;}
+.kit-item-nome{flex:1; font-weight:700; font-size:0.92rem; color:var(--verde-900);}
+.kit-item-stepper{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+.kit-item-stepper button{
+  width:28px; height:28px; border-radius:8px; background:var(--verde-100); color:var(--verde-800);
+  font-weight:900; font-size:1.05rem; display:flex; align-items:center; justify-content:center;
+}
+.kit-item-stepper button:disabled{opacity:.35; cursor:not-allowed;}
+.kit-item-stepper span{min-width:16px; text-align:center; font-weight:800;}
+.kit-modal-rodape{padding:16px 22px 20px; border-top:1px solid #eef2ee;}
+.kit-modal-rodape button{
+  width:100%; background:var(--grad-btn); color:var(--verde-900); padding:14px; border-radius:12px;
+  font-weight:800; font-size:0.95rem;
+}
+.kit-modal-rodape button:disabled{background:#e2e8e3; color:#9aa79f; cursor:not-allowed;}
+.kit-fechar-btn{background:rgba(255,255,255,.15); color:#fff; width:30px; height:30px; border-radius:50%; font-size:1rem; flex-shrink:0;}
+@media (max-width:600px){
+  .kit-modal{width:94vw; max-height:88vh;}
+}
 
 /* ===================== FOOTER ===================== */
 footer{background:var(--verde-900); color:rgba(255,255,255,.85); padding:50px 0 24px;}
@@ -363,7 +412,8 @@ footer a.link:hover{text-decoration:underline;}
     </a>
     <nav class="menu" id="menuNav">
       <a href="#frutas">Frutas</a>
-      <a href="#verduras">Verduras</a>
+      <a href="#frutas-picadas">Frutas Picadas</a>
+      <a href="#verduras">Verduras e Legumes</a>
       <a href="#legumes">Legumes</a>
       <a href="#como-funciona">Como funciona</a>
     </nav>
@@ -471,13 +521,29 @@ footer a.link:hover{text-decoration:underline;}
   <svg viewBox="0 0 1200 46" preserveAspectRatio="none"><path d="M0,46 L0,20 Q50,0 100,20 T200,20 T300,20 T400,20 T500,20 T600,20 T700,20 T800,20 T900,20 T1000,20 T1100,20 T1200,20 L1200,46 Z" fill="#D8F3DC"></path></svg>
 </div>
 
-<!-- ============ VERDURAS ============ -->
+<!-- ============ FRUTAS PICADAS ============ -->
+<section class="secao" id="frutas-picadas" style="background:var(--creme);">
+  <div class="container">
+    <div class="secao-titulo">
+      <span class="eyebrow">🍹 Frutas Picadas</span>
+      <h2>Prontas pra comer</h2>
+      <p>Frutas fresquinhas, já lavadas e picadinhas — é só abrir e servir.</p>
+    </div>
+    <div class="grade-produtos" id="grade-frutas-picadas"></div>
+  </div>
+</section>
+
+<div class="divisor">
+  <svg viewBox="0 0 1200 46" preserveAspectRatio="none"><path d="M0,0 L0,26 Q50,46 100,26 T200,26 T300,26 T400,26 T500,26 T600,26 T700,26 T800,26 T900,26 T1000,26 T1100,26 T1200,26 L1200,0 Z" fill="#D8F3DC"></path></svg>
+</div>
+
+<!-- ============ VERDURAS E LEGUMES PICADOS ============ -->
 <section class="secao" id="verduras" style="background:var(--creme);">
   <div class="container">
     <div class="secao-titulo">
-      <span class="eyebrow">🥬 Verduras </span>
-      <h2>Fresquinhas e cheia de sabor</h2>
-      <p>Frescas, crocantes e prontas para sua mesa.</p>
+      <span class="eyebrow">🥬🥕 Verduras e Legumes Picados</span>
+      <h2>Já limpos, picados e higienizados</h2>
+      <p>Economize tempo na cozinha: tudo lavado, descascado e picadinho, do jeito que você precisa.</p>
     </div>
     <div class="grade-produtos" id="grade-verduras"></div>
   </div>
@@ -621,6 +687,23 @@ footer a.link:hover{text-decoration:underline;}
 
 </aside>
 
+<!-- ============ MODAL: MONTAR KIT ============ -->
+<div class="kit-overlay" id="kitOverlay" onclick="fecharKitModal()"></div>
+<div class="kit-modal" id="kitModal" aria-label="Montar kit">
+  <div class="kit-modal-cabecalho">
+    <div>
+      <h3 id="kitModalTitulo">Kit</h3>
+      <p id="kitModalSubtitulo">Escolha os itens do seu kit</p>
+    </div>
+    <span class="kit-modal-contador" id="kitModalContador">0 / 6</span>
+    <button class="kit-fechar-btn" onclick="fecharKitModal()">✕</button>
+  </div>
+  <div class="kit-modal-lista" id="kitModalLista"></div>
+  <div class="kit-modal-rodape">
+    <button id="kitModalConfirmar" onclick="confirmarKit()" disabled>Escolha os itens para continuar</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -655,13 +738,78 @@ const PRODUTOS = [
    { id:"manga",       nome:"Manga",                 unidade:"unidade",      preco:9.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/manga.jpg"},
   { id:"limao",        nome:"Limão taiti",           unidade:"bandeja",      preco:7.00,  categoria:"frutas",  emoji:"🥭", imagem:"produtos/limao-taiti.jpg"},
 
-  // ---------- VERDURAS HIDROPÔNICAS ----------
-  { id:"alface-crespa",nome:"Alface Crespa",         unidade:"unidade",      preco:6.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-crespa.jpg" },
-  { id:"alface-roxa",  nome:"Alface Roxa",            unidade:"unidade",      preco:6.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/alface-roxo.jpg" },
-  { id:"brocolis",     nome:"Brócolis Ninja",               unidade:"unidade", preco:7.00,  categoria:"verduras",emoji:"🥦", imagem:"produtos/brocolis.jpg"},
-  { id:"couve flor",       nome:"Couve Flor",         unidade:"unidade",      preco:7.00,  categoria:"verduras",emoji:"🥦", imagem:"produtos/couve-flor.jpg"},
-  { id:"repolho",      nome:"Repolho Verde",          unidade:"unidade",      preco:7.00,  categoria:"verduras",emoji:"🥬", imagem:"produtos/repolho.jpg" },
-  { id:"rucula",       nome:"Rúcula",                 unidade:"maço",         preco:6.00,  categoria:"verduras",emoji:"🌿", imagem:"produtos/rucula.jpg" },
+  // ============================================================
+  // FRUTAS PICADAS — 🔧 preços de exemplo, ajuste pelo seu custo real.
+  // Pra adicionar uma fruta picada nova: copie uma linha, troque id/nome/preco/emoji.
+  // Se ela também puder entrar no "Kit Frutas Picadas", adicione o id dela
+  // no array "itensPermitidos" do kit lá embaixo.
+  // ============================================================
+  { id:"manga-picada",     nome:"Manga Picada",              unidade:"bandeja 300g", preco:8.00,  categoria:"frutas-picadas", emoji:"🥭", imagem:"produtos/manga-picado.JPG" },
+  { id:"abacaxi-picado",   nome:"Abacaxi Picado",            unidade:"bandeja 300g", preco:8.00,  categoria:"frutas-picadas", emoji:"🍍", imagem:"produtos/abacaxi-picado.JPG" },
+  { id:"melao-picado",     nome:"Melão Picado",              unidade:"bandeja 300g", preco:8.00,  categoria:"frutas-picadas", emoji:"🍈", imagem:"produtos/melao-picado.JPG" },
+  { id:"maca-picada",      nome:"Maçã Picada",               unidade:"bandeja 300g", preco:8.00,  categoria:"frutas-picadas", emoji:"🍎", imagem:"produtos/maca-picado.JPG" },
+  { id:"mamao-picado",     nome:"Mamão Picado",              unidade:"bandeja 300g", preco:8.00,  categoria:"frutas-picadas", emoji:"🧡", imagem:"produtos/mamao-picado.JPG" },
+  { id:"melancia-picada",  nome:"Melancia Picada",           unidade:"bandeja 300g", preco:8.00,  categoria:"frutas-picadas", emoji:"🍉", imagem:"produtos/melancia-picado.JPG" },
+  { id:"morango-picado",   nome:"Morango Picado",            unidade:"bandeja 300g", preco:9.00,  categoria:"frutas-picadas", emoji:"🍓", imagem:"produtos/morango-picado.JPG" },
+  { id:"kiwi-picado",      nome:"Kiwi Picado",               unidade:"bandeja 300g", preco:9.00,  categoria:"frutas-picadas", emoji:"🥝", imagem:"produtos/kiwi-picado.JPG" },
+
+  // Saladas de frutas prontas (não entram no kit avulso, são produtos fechados)
+  { id:"salada-frutas-1",  nome:"Salada de Frutas 1",        unidade:"pote 400g", preco:15.00, categoria:"frutas-picadas", emoji:"🍹",
+    descricao:"Manga, mamão, morango, uva e kiwi", imagem:"produtos/salada-fruta1.JPG" },
+  { id:"salada-frutas-2",  nome:"Salada de Frutas 2",        unidade:"pote 400g", preco:15.00, categoria:"frutas-picadas", emoji:"🍹",
+    descricao:"Manga, abacaxi, melão, morango e banana", imagem:"produtos/salada-fruta2.JPG" },
+
+  // Kit montável: o cliente escolhe 6 unidades entre as frutas picadas (saladas ficam de fora)
+  { id:"kit-frutas-picadas", nome:"Kit Frutas Picadas c/ 6un", unidade:"kit — você escolhe os sabores", preco:47.90,
+    categoria:"frutas-picadas", emoji:"🍹", imagem:"produtos/kit-fruta.JPG", tipo:"kit", qtdEscolha:6,
+    itensPermitidos:["manga-picada","abacaxi-picado","melao-picado","maca-picada","mamao-picado","melancia-picada","morango-picado","kiwi-picado"] },
+
+  // ============================================================
+  // VERDURAS E LEGUMES PICADOS — 🔧 preços de exemplo, ajuste pelo seu custo real.
+  // Pra adicionar um item novo: copie uma linha, troque id/nome/preco/emoji.
+  // Se ele também puder entrar no "Kit Verduras e Legumes Picados", adicione o
+  // id dele no array "itensPermitidos" do kit lá embaixo.
+  // ============================================================
+  { id:"abobrinha-picada",          nome:"Abobrinha Picada",              unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🥒", imagem:"produtos/abobrinha-picado.png"},
+  { id:"abobora-cabotia-picada",    nome:"Abóbora Cabotiá Picada",        unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🎃", imagem:"produtos/abobora-cabotia-picado.png"},
+  { id:"batata-picada",             nome:"Batata Picada",                 unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🥔", imagem:"produtos/batata-picado.png" },
+  { id:"batata-doce-picada",        nome:"Batata Doce Picada",            unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🍠", imagem:"produtos/batata-doce-picado.png" },
+  { id:"beterraba-picada",          nome:"Beterraba Picada",              unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🔴", imagem:"produtos/beterraba-picado.png" },
+  { id:"cenoura-picada",            nome:"Cenoura Picada",                unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🥕", imagem:"produtos/cenoura-picado.png" },
+  { id:"chuchu-picado",             nome:"Chuchu Picado",                 unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🥒", imagem:"produtos/chuchu-picado.png" },
+  { id:"pimentao-picado",           nome:"Pimentão Picado",               unidade:"bandeja 400g", preco:6.50, categoria:"verduras", emoji:"🫑", imagem:"produtos/pimentao-picado.JPG" },
+  { id:"vagem-quiabo-picado",       nome:"Vagem e Quiabo",                unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🫛",
+    descricao:"Vagem e quiabo picados", imagem:"produtos/vagem-quiabo.JPG" },
+  { id:"brocolis-couveflor-picado", nome:"Brócolis e Couve-flor",         unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥦",
+    descricao:"Brócolis e couve-flor picados", imagem:"produtos/brocolis-couvefror.JPG" },
+
+  // ---- Mixes prontos ----
+  { id:"mix1-cenoura-chuchu-abobrinha", nome:"Mix 1",  unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Cenoura, chuchu e abobrinha", imagem:"produtos/mix1-cenoura-chuchu-abobrinha.png" },
+  { id:"mix2-cenoura-vagem-abobrinha",  nome:"Mix 2",  unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Cenoura, vagem e abobrinha", imagem:"produtos/mix2-cenoura-vagem-abobrinha.png" },
+  { id:"casadinho-batata-cenoura",      nome:"Casadinho",unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥘",
+    descricao:"Batata e cenoura", imagem:"produtos/casadinho-batata-cenoura.png" },
+  { id:"mix-maionese",                  nome:"Mix Maionese", unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Batata, cenoura e vagem", imagem:"produtos/mix-maionese.png" },
+  { id:"mix-sopinha",                   nome:"Mix Sopinha",  unidade:"bandeja 400g", preco:7.50, categoria:"verduras", emoji:"🍲",
+    descricao:"Batata, cenoura, vagem, abobrinha e chuchu", imagem:"produtos/mix-sopinha.png" },
+  { id:"mix-salada-1",                  nome:"Mix Salada 1", unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Cenoura, couve e beterraba", imagem:"produtos/mix-salada1.JPG" },
+  { id:"mix-salada-2",                  nome:"Mix Salada 2", unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Cenoura, couve e repolho roxo", imagem:"produtos/mix-salada2.JPG" },
+  { id:"mix-salada-3",                  nome:"Mix Salada 3", unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Couve, repolho e pepino", imagem:"produtos/mix-salada3.JPG" },
+  { id:"mix-salada-4",                  nome:"Mix Salada 4", unidade:"bandeja 400g", preco:7.00, categoria:"verduras", emoji:"🥗",
+    descricao:"Repolho, cenoura, tomate e pepino", imagem:"produtos/mix-salada4.JPG" },
+
+  // Kit montável: o cliente escolhe 6 unidades entre todos os itens picados/mixes acima
+  { id:"kit-verduras-legumes-picados", nome:"Kit Verduras e Legumes c/ 6un", unidade:"kit — você escolhe os itens", preco:49.90,
+    categoria:"verduras", emoji:"🥕", imagem:"produtos/kit-verdura.jpg", tipo:"kit", qtdEscolha:6,
+    itensPermitidos:["abobrinha-picada","abobora-cabotia-picada","batata-picada","batata-doce-picada","beterraba-picada",
+      "cenoura-picada","chuchu-picado","pimentao-picado","vagem-quiabo-picado","brocolis-couveflor-picado",
+      "mix1-cenoura-chuchu-abobrinha","mix2-cenoura-vagem-abobrinha","casadinho-batata-cenoura","mix-maionese",
+      "mix-sopinha","mix-salada-1","mix-salada-2","mix-salada-3","mix-salada-4"] },
 
   // ---------- LEGUMES ----------
  
@@ -702,22 +850,26 @@ function criarCartaoProduto(p){
   const fotoConteudo = p.imagem
     ? `<img src="${p.imagem}" alt="${p.nome}">`
     : p.emoji;
+  const ehKit = p.tipo === "kit";
+  const acao = ehKit ? `abrirKit('${p.id}')` : `adicionarAoCarrinho('${p.id}')`;
+  const textoBotao = ehKit ? "Montar kit" : "Adicionar";
   return `
-    <div class="cartao-produto">
+    <div class="cartao-produto ${ehKit ? 'cartao-kit' : ''}">
       <div class="cartao-foto">${fotoConteudo}</div>
       <div class="cartao-corpo">
         <h4>${p.nome}</h4>
         <div class="unidade">${p.unidade}</div>
+        ${p.descricao ? `<div class="unidade" style="margin-top:-4px;">${p.descricao}</div>` : ''}
         <div class="cartao-rodape">
           <span class="preco">${formatarPreco(p.preco)}</span>
-          <button class="btn-add" id="btn-${p.id}" onclick="adicionarAoCarrinho('${p.id}')">Adicionar</button>
+          <button class="btn-add" id="btn-${p.id}" onclick="${acao}">${textoBotao}</button>
         </div>
       </div>
     </div>`;
 }
 
 function renderizarProdutos(){
-  const grades = { frutas:"grade-frutas", verduras:"grade-verduras", legumes:"grade-legumes" };
+  const grades = { frutas:"grade-frutas", "frutas-picadas":"grade-frutas-picadas", verduras:"grade-verduras", legumes:"grade-legumes" };
   Object.keys(grades).forEach(cat=>{
     const container = document.getElementById(grades[cat]);
     container.innerHTML = PRODUTOS.filter(p=>p.categoria===cat).map(criarCartaoProduto).join("");
@@ -728,13 +880,19 @@ function renderizarProdutos(){
    CARRINHO — estado e persistência
 ============================================================ */
 let carrinho = {};
+let carrinhoKits = []; // kits montados: [{ instanceId, kitId, nomeKit, preco, composicao:[{id,nome,qtd}] }]
 try{
   const salvo = localStorage.getItem('horta_express_carrinho');
   if(salvo) carrinho = JSON.parse(salvo);
-}catch(e){ carrinho = {}; }
+  const salvoKits = localStorage.getItem('horta_express_carrinho_kits');
+  if(salvoKits) carrinhoKits = JSON.parse(salvoKits);
+}catch(e){ carrinho = {}; carrinhoKits = []; }
 
 function salvarCarrinho(){
-  try{ localStorage.setItem('horta_express_carrinho', JSON.stringify(carrinho)); }catch(e){}
+  try{
+    localStorage.setItem('horta_express_carrinho', JSON.stringify(carrinho));
+    localStorage.setItem('horta_express_carrinho_kits', JSON.stringify(carrinhoKits));
+  }catch(e){}
 }
 
 function adicionarAoCarrinho(id){
@@ -768,14 +926,17 @@ function removerItem(id){
 }
 
 function totalItensCarrinho(){
-  return Object.values(carrinho).reduce((a,b)=>a+b,0);
+  const totalProdutos = Object.values(carrinho).reduce((a,b)=>a+b,0);
+  return totalProdutos + carrinhoKits.length;
 }
 
 function subtotalCarrinho(){
-  return Object.entries(carrinho).reduce((soma,[id,qtd])=>{
+  const totalProdutos = Object.entries(carrinho).reduce((soma,[id,qtd])=>{
     const p = PRODUTOS.find(x=>x.id===id);
     return p ? soma + p.preco*qtd : soma;
   },0);
+  const totalKits = carrinhoKits.reduce((soma,k)=> soma + k.preco, 0);
+  return totalProdutos + totalKits;
 }
 
 function atualizarBadge(){
@@ -787,10 +948,10 @@ function renderizarCarrinho(){
   const lista = document.getElementById('listaCarrinho');
   const itens = Object.entries(carrinho);
 
-  if(itens.length === 0){
+  if(itens.length === 0 && carrinhoKits.length === 0){
     lista.innerHTML = `<div class="carrinho-vazio"><div class="emoji">🧺</div><p>Seu carrinho está vazio.<br>Adicione produtos fresquinhos!</p></div>`;
   }else{
-    lista.innerHTML = itens.map(([id,qtd])=>{
+    let html = itens.map(([id,qtd])=>{
       const p = PRODUTOS.find(x=>x.id===id);
       if(!p) return '';
       const foto = p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : p.emoji;
@@ -812,6 +973,24 @@ function renderizarCarrinho(){
           </div>
         </div>`;
     }).join("");
+
+    html += carrinhoKits.map(k=>{
+      const composicaoTexto = k.composicao.map(c=>`${c.qtd}x ${c.nome}`).join(", ");
+      return `
+        <div class="item-carrinho">
+          <div class="foto">🎁</div>
+          <div class="item-info">
+            <div class="nome">${k.nomeKit}</div>
+            <div class="unid">${composicaoTexto}</div>
+          </div>
+          <div class="item-preco">
+            <b>${formatarPreco(k.preco)}</b>
+            <button class="remover-item" onclick="removerKit('${k.instanceId}')">remover</button>
+          </div>
+        </div>`;
+    }).join("");
+
+    lista.innerHTML = html;
   }
 
   const subtotal = subtotalCarrinho();
@@ -826,7 +1005,7 @@ function renderizarCarrinho(){
     <div class="linha-resumo"><span>Subtotal</span><span>${formatarPreco(subtotal)}</span></div>
     <div class="linha-resumo"><span>Entrega</span><span>${subtotal===0 ? '—' : (frete===0 ? 'Grátis' : formatarPreco(frete))}</span></div>
     <div class="linha-resumo total"><span>Total</span><span>${formatarPreco(total)}</span></div>
-    <button class="btn-checkout" ${itens.length===0 ? 'disabled' : ''} onclick="mostrarView('formulario')">Finalizar pedido</button>
+    <button class="btn-checkout" ${(itens.length===0 && carrinhoKits.length===0) ? 'disabled' : ''} onclick="mostrarView('formulario')">Finalizar pedido</button>
   `;
 
   // espelha o resumo na tela do formulário também
@@ -839,6 +1018,115 @@ function renderizarCarrinho(){
       <button class="btn-checkout" onclick="enviarPedidoWhatsApp()">Enviar pedido no WhatsApp 💬</button>
     `;
   }
+}
+
+/* ============================================================
+   KITS MONTÁVEIS
+   Como funciona: um produto com tipo:"kit" define quantos itens o
+   cliente escolhe (qtdEscolha) e quais produtos podem compor o kit
+   (itensPermitidos, uma lista de ids de outros produtos do PRODUTOS).
+   Preço do kit é sempre fixo, independente da combinação escolhida.
+============================================================ */
+let kitAtual = null;   // id do kit sendo montado no momento
+let kitEscolhas = {};  // { idDoItem: quantidadeEscolhida }
+
+function abrirKit(kitId){
+  const kit = PRODUTOS.find(p=>p.id===kitId);
+  if(!kit) return;
+  kitAtual = kitId;
+  kitEscolhas = {};
+  document.getElementById('kitModalTitulo').textContent = kit.nome;
+  document.getElementById('kitModalSubtitulo').textContent = `Escolha ${kit.qtdEscolha} itens para montar seu kit`;
+  renderizarKitModal();
+  document.getElementById('kitOverlay').classList.add('ativo');
+  document.getElementById('kitModal').classList.add('aberto');
+}
+
+function fecharKitModal(){
+  document.getElementById('kitOverlay').classList.remove('ativo');
+  document.getElementById('kitModal').classList.remove('aberto');
+  kitAtual = null;
+  kitEscolhas = {};
+}
+
+function totalEscolhidoKit(){
+  return Object.values(kitEscolhas).reduce((a,b)=>a+b,0);
+}
+
+function alterarQtdKitItem(itemId, delta){
+  const kit = PRODUTOS.find(p=>p.id===kitAtual);
+  if(!kit) return;
+  const atual = kitEscolhas[itemId] || 0;
+  if(delta > 0 && totalEscolhidoKit() >= kit.qtdEscolha) return; // já bateu o limite
+  const novo = atual + delta;
+  if(novo <= 0) delete kitEscolhas[itemId];
+  else kitEscolhas[itemId] = novo;
+  renderizarKitModal();
+}
+
+function renderizarKitModal(){
+  const kit = PRODUTOS.find(p=>p.id===kitAtual);
+  if(!kit) return;
+
+  const lista = document.getElementById('kitModalLista');
+  lista.innerHTML = kit.itensPermitidos.map(id=>{
+    const p = PRODUTOS.find(x=>x.id===id);
+    if(!p) return '';
+    const qtd = kitEscolhas[id] || 0;
+    const foto = p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : p.emoji;
+    const podeAumentar = totalEscolhidoKit() < kit.qtdEscolha;
+    return `
+      <div class="kit-item-linha">
+        <div class="kit-item-foto">${foto}</div>
+        <div class="kit-item-nome">${p.nome}</div>
+        <div class="kit-item-stepper">
+          <button onclick="alterarQtdKitItem('${id}',-1)" ${qtd===0 ? 'disabled' : ''} aria-label="Diminuir">−</button>
+          <span>${qtd}</span>
+          <button onclick="alterarQtdKitItem('${id}',1)" ${podeAumentar ? '' : 'disabled'} aria-label="Aumentar">+</button>
+        </div>
+      </div>`;
+  }).join("");
+
+  const total = totalEscolhidoKit();
+  document.getElementById('kitModalContador').textContent = `${total} / ${kit.qtdEscolha}`;
+
+  const btnConfirmar = document.getElementById('kitModalConfirmar');
+  const completo = total === kit.qtdEscolha;
+  btnConfirmar.disabled = !completo;
+  btnConfirmar.textContent = completo
+    ? `Adicionar ao carrinho — ${formatarPreco(kit.preco)}`
+    : `Escolha mais ${kit.qtdEscolha - total} item(ns)`;
+}
+
+function confirmarKit(){
+  const kit = PRODUTOS.find(p=>p.id===kitAtual);
+  if(!kit || totalEscolhidoKit() !== kit.qtdEscolha) return;
+
+  const composicao = Object.entries(kitEscolhas).map(([id,qtd])=>{
+    const p = PRODUTOS.find(x=>x.id===id);
+    return { id, nome: p ? p.nome : id, qtd };
+  });
+
+  carrinhoKits.push({
+    instanceId: 'kit_' + Date.now() + '_' + Math.floor(Math.random()*1000),
+    kitId: kit.id,
+    nomeKit: kit.nome,
+    preco: kit.preco,
+    composicao
+  });
+
+  salvarCarrinho();
+  atualizarBadge();
+  fecharKitModal();
+  mostrarToast("Kit adicionado ao carrinho ✅");
+  if(document.getElementById('carrinhoDrawer').classList.contains('aberto')) renderizarCarrinho();
+}
+
+function removerKit(instanceId){
+  carrinhoKits = carrinhoKits.filter(k=>k.instanceId !== instanceId);
+  salvarCarrinho();
+  atualizarBadge();
+  renderizarCarrinho();
 }
 
 /* ============================================================
@@ -934,7 +1222,7 @@ function enviarPedidoWhatsApp(){
     mostrarToast("Escolha a forma de pagamento ⚠️");
     return;
   }
-  if(Object.keys(carrinho).length === 0){
+  if(Object.keys(carrinho).length === 0 && carrinhoKits.length === 0){
     mostrarToast("Seu carrinho está vazio 🧺");
     return;
   }
@@ -949,11 +1237,20 @@ function enviarPedidoWhatsApp(){
   msg += `📱 *Telefone:* ${telefone}\n`;
   msg += `📍 *Endereço:* ${rua}, ${numero} — ${bairro}, ${cidade}\n`;
   if(referencia) msg += `🏠 *Referência:* ${referencia}\n`;
-  msg += `\n🧺 *Itens do pedido:*\n`;
-  itens.forEach(([id,qtd])=>{
-    const p = PRODUTOS.find(x=>x.id===id);
-    if(p) msg += `• ${qtd}x ${p.nome} (${p.unidade}) — ${formatarPreco(p.preco*qtd)}\n`;
-  });
+  if(itens.length){
+    msg += `\n🧺 *Itens do pedido:*\n`;
+    itens.forEach(([id,qtd])=>{
+      const p = PRODUTOS.find(x=>x.id===id);
+      if(p) msg += `• ${qtd}x ${p.nome} (${p.unidade}) — ${formatarPreco(p.preco*qtd)}\n`;
+    });
+  }
+  if(carrinhoKits.length){
+    msg += `\n🎁 *Kits montados:*\n`;
+    carrinhoKits.forEach(k=>{
+      msg += `• ${k.nomeKit} — ${formatarPreco(k.preco)}\n`;
+      k.composicao.forEach(c=> msg += `   - ${c.qtd}x ${c.nome}\n`);
+    });
+  }
   msg += `\n💰 *Subtotal:* ${formatarPreco(subtotal)}`;
   msg += `\n🚚 *Entrega:* ${frete===0 ? 'Grátis' : formatarPreco(frete)}`;
   msg += `\n✅ *Total:* ${formatarPreco(total)}\n`;
@@ -971,6 +1268,7 @@ function enviarPedidoWhatsApp(){
 
   // limpa o carrinho e o formulário após enviar
   carrinho = {};
+  carrinhoKits = [];
   salvarCarrinho();
   atualizarBadge();
   document.getElementById('formEntrega').reset();
